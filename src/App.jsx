@@ -1,11 +1,32 @@
+import { useEffect, useState } from "react";
+
 export default function App() {
+	const [quote, setQuote] = useState("");
+	const [author, setAuthor] = useState("");
+
+	async function getQuote() {
+		const url = "https://api.quotable.io/quotes/random";
+		try {
+			const response = await fetch(url);
+			if (!response.ok) throw new Error("Connection Timed Out!");
+			const [data] = await response.json();
+			const [quoteText, authorText] = [data.content, data.author];
+			setQuote(quoteText);
+			setAuthor(authorText);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	useEffect(() => {
+		setQuote("Until you spread your wings, you’ll have no idea how far you can fly.");
+		setAuthor("Napoleon Bonaparte");
+	}, []);
+
 	return (
 		<div className="center" id="quote-box">
 			<blockquote cite="#" className="quote-block">
-				<p id="text">
-					Those who want to live let them fight, those who do not want to fight in this world of eternal struggle do not
-					deserve to live
-				</p>
+				<p id="text">{quote}</p>
 
 				<div className="downer-box">
 					<div className="social-network">
@@ -14,23 +35,25 @@ export default function App() {
 							target="_blank"
 							rel="noreferrer"
 						>
-							<img src="./github.svg" alt="Github" />
+							<img src="./imgs/github.svg" alt="Github" />
 						</a>
 
 						<a href="https://www.linkedin.com/in/mohammadmehdibeheshti/" target="_blank" rel="noreferrer">
-							<img src="./linkedin.svg" alt="LinkedIn" />
+							<img src="./imgs/linkedin.svg" alt="LinkedIn" />
 						</a>
 
 						<a href="twitter.com/intent/tweet" target="_blank" id="tweet-quote">
-							<img src="./twitter.svg" alt="Twitter" />
+							<img src="./imgs/twitter.svg" alt="Twitter" />
 						</a>
 					</div>
 
-					<span id="author">-Paul hassle</span>
+					<span id="author">-{author}</span>
 				</div>
 			</blockquote>
 
-			<button id="new-quote">New Quote</button>
+			<button id="new-quote" onClick={getQuote}>
+				New Quote
+			</button>
 		</div>
 	);
 }

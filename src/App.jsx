@@ -35,15 +35,15 @@ export default function App() {
 							target="_blank"
 							rel="noreferrer"
 						>
-							<img src="./imgs/github.svg" alt="Github" />
+							<img src="./imgs/github.svg" alt="Github" className="svg-icon" />
 						</a>
 
 						<a href="https://www.linkedin.com/in/mohammadmehdibeheshti/" target="_blank" rel="noreferrer">
-							<img src="./imgs/linkedin.svg" alt="LinkedIn" />
+							<img src="./imgs/linkedin.svg" alt="LinkedIn" className="svg-icon" />
 						</a>
 
 						<a href="twitter.com/intent/tweet" target="_blank" id="tweet-quote">
-							<img src="./imgs/twitter.svg" alt="Twitter" />
+							<img src="./imgs/twitter.svg" alt="Twitter" className="svg-icon" />
 						</a>
 					</div>
 

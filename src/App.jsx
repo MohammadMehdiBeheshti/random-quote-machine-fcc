@@ -26,7 +26,7 @@ export default function App() {
 	return (
 		<div className="center" id="quote-box">
 			<blockquote cite="#" className="quote-block">
-				<p id="text">{quote}</p>
+				<p id="text">&quot;{quote}&quot;</p>
 
 				<div className="downer-box">
 					<div className="social-network">

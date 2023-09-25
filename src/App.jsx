@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import Skeleton from "./Skeleton";
 
 export default function App() {
 	const [quote, setQuote] = useState("");
 	const [author, setAuthor] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const getQuote = async () => {
 		const url = "https://api.quotable.io/quotes/random";
 		try {
+			setIsLoading(true);
 			const response = await fetch(url);
 			if (!response.ok) throw new Error("Connection Timed Out!");
 			const [data] = await response.json();
@@ -15,6 +18,8 @@ export default function App() {
 			setAuthor(authorText);
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -24,8 +29,12 @@ export default function App() {
 
 	return (
 		<div className="center" id="quote-box">
-			<blockquote cite="#" className="quote-block">
-				<p id="text">&quot;{quote}&quot;</p>
+			<blockquote cite={author} className="quote-block">
+				{!isLoading ? (
+					<p id="text">&quot;{quote}&quot;</p>
+				) : (
+					<Skeleton lines="5" />
+				)}
 
 				<div className="downer-box">
 					<div className="social-network">
@@ -58,7 +67,11 @@ export default function App() {
 						</a>
 					</div>
 
-					<span id="author">-{author}</span>
+					{!isLoading ? (
+						<span id="author">-{author}</span>
+					) : (
+						<Skeleton width="12rem" />
+					)}
 				</div>
 			</blockquote>
 

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
 	const [quote, setQuote] = useState("");
 	const [author, setAuthor] = useState("");
 
-	async function getQuote() {
+	const getQuote = async () => {
 		const url = "https://api.quotable.io/quotes/random";
 		try {
 			const response = await fetch(url);
@@ -16,11 +16,10 @@ export default function App() {
 		} catch (error) {
 			console.error(error);
 		}
-	}
+	};
 
 	useEffect(() => {
-		setQuote("Until you spread your wings, you’ll have no idea how far you can fly.");
-		setAuthor("Napoleon Bonaparte");
+		getQuote();
 	}, []);
 
 	return (
@@ -38,12 +37,24 @@ export default function App() {
 							<img src="./imgs/github.svg" alt="Github" className="svg-icon" />
 						</a>
 
-						<a href="https://www.linkedin.com/in/mohammadmehdibeheshti/" target="_blank" rel="noreferrer">
-							<img src="./imgs/linkedin.svg" alt="LinkedIn" className="svg-icon" />
+						<a
+							href="https://www.linkedin.com/in/mohammadmehdibeheshti/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<img
+								src="./imgs/linkedin.svg"
+								alt="LinkedIn"
+								className="svg-icon"
+							/>
 						</a>
 
 						<a href="twitter.com/intent/tweet" target="_blank" id="tweet-quote">
-							<img src="./imgs/twitter.svg" alt="Twitter" className="svg-icon" />
+							<img
+								src="./imgs/twitter.svg"
+								alt="Twitter"
+								className="svg-icon"
+							/>
 						</a>
 					</div>
 

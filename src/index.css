@@ -1,16 +1,22 @@
 @font-face {
 	font-family: "lobster";
 	src: url("./fonts/Lobster-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: "lobster-two";
 	src: url("./fonts/LobsterTwo-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: "poppins";
 	src: url("./fonts/Poppins-SemiBold.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
